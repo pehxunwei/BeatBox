@@ -1,0 +1,717 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fnil\fcharset0 Menlo-Italic;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red108\green121\blue134;\red31\green31\blue36;\red255\green255\blue255;
+\red150\green134\blue245;\red252\green95\blue163;\red252\green106\blue93;}
+{\*\expandedcolortbl;;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000;
+\csgenericrgb\c58752\c52717\c95948;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c98912\c41558\c36568;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18360\viewh11600\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\i\fs24 \cf2 \cb3 //const countertext = document.getElementById('counter-text');
+\f1\i0 \cf0 \
+
+\f2 \cf4 let hrc =\cf5 0\cf4 ;
+\f1 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  lastarray;
+\f1 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  lastarray1;
+\f1 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  yes1;
+\f1 \cf0 \
+
+\f0\i \cf2 //var hrc=0;
+\f1\i0 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  count;
+\f1 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  yes3;
+\f1 \cf0 \
+
+\f3\b \cf6 var
+\f2\b0 \cf4  yes2;
+\f1 \cf0 \
+\
+
+\f2 \cf4 window.localStorage
+\f1 \cf0 \
+
+\f0\i \cf2 //localStorage.clear();
+\f1\i0 \cf0 \
+\
+
+\f2 \cf4 $(
+\f3\b \cf6 function
+\f2\b0 \cf4 () \{
+\f1 \cf0 \
+
+\f2 \cf4   
+\f3\b \cf6 var
+\f2\b0 \cf4  x_values = [];
+\f1 \cf0 \
+
+\f2 \cf4   
+\f3\b \cf6 var
+\f2\b0 \cf4   y_values = [];
+\f1 \cf0 \
+
+\f2 \cf4   
+\f3\b \cf6 var
+\f2\b0 \cf4  yes;
+\f1 \cf0 \
+
+\f2 \cf4   
+\f1 \cf0 \
+
+\f2 \cf4   
+\f3\b \cf6 var
+\f2\b0 \cf4  switch1 = true;
+\f1 \cf0 \
+
+\f2 \cf4   
+\f1 \cf0 \
+
+\f2 \cf4   $.get(\cf5 'data.php'\cf4 , 
+\f3\b \cf6 function
+\f2\b0 \cf4 (data) \{
+\f1 \cf0 \
+
+\f2 \cf4         console.log(data);
+\f1 \cf0 \
+
+\f2 \cf4         data = data.split(\cf5 '/'\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4         
+\f3\b \cf6 for
+\f2\b0 \cf4  (
+\f3\b \cf6 var
+\f2\b0 \cf4  i in data)
+\f1 \cf0 \
+
+\f2 \cf4         \{
+\f1 \cf0 \
+
+\f2 \cf4         
+\f3\b \cf6 if
+\f2\b0 \cf4  (switch1 == true)
+\f1 \cf0 \
+
+\f2 \cf4         \{
+\f1 \cf0 \
+
+\f2 \cf4         x_values.push(parseFloat(data[i]));
+\f1 \cf0 \
+
+\f2 \cf4         
+\f0\i \cf2 //yes = parseFloat(data[9]) ;
+\f1\i0 \cf0 \
+
+\f2 \cf4         switch1 = false;
+\f1 \cf0 \
+
+\f2 \cf4         \}
+\f1 \cf0 \
+
+\f2 \cf4         
+\f3\b \cf6 else
+\f1\b0 \cf0 \
+
+\f2 \cf4         \{
+\f1 \cf0 \
+
+\f2 \cf4         y_values.push(parseFloat(data[i]));
+\f1 \cf0 \
+
+\f2 \cf4         switch1 = true;
+\f1 \cf0 \
+
+\f2 \cf4         \}
+\f1 \cf0 \
+
+\f2 \cf4         \}
+\f1 \cf0 \
+
+\f2 \cf4         
+\f1 \cf0 \
+
+\f2 \cf4         x_values.pop();
+\f1 \cf0 \
+
+\f2 \cf4         
+\f1 \cf0 \
+
+\f2 \cf4         setInterval(
+\f3\b \cf6 function
+\f2\b0 \cf4 ()\{
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 var
+\f2\b0 \cf4  yes3 = localStorage.getItem(\cf7 "last"\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                     yes1 = y_values.length;
+\f1 \cf0 \
+
+\f2 \cf4                     yes3 =parseFloat(yes3);
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f0\i \cf2 // window.alert(yes3);
+\f1\i0 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 if
+\f2\b0 \cf4 (yes3)
+\f1 \cf0 \
+
+\f2 \cf4                     \{yes3 = yes3 \cf5 +220\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 if
+\f2\b0 \cf4 (yes3>=yes1)
+\f1 \cf0 \
+
+\f2 \cf4                     \{
+\f1 \cf0 \
+
+\f2 \cf4                     yes3=yes1\cf5 -250\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4                     \}
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 else
+\f2\b0 \cf4 \{yes3 = yes3;\}
+\f1 \cf0 \
+
+\f2 \cf4                     \}
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 else
+\f2\b0 \cf4 \{yes3 = \cf5 88\cf4 ;\}
+\f1 \cf0 \
+
+\f2 \cf4                     hrc = \cf5 0\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 for
+\f2\b0 \cf4  (i = yes3; i<=yes3\cf5 +220\cf4 ; i += \cf5 8\cf4 ) \{
+\f1 \cf0 \
+
+\f2 \cf4                     count= parseFloat(y_values[i]);
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 if
+\f2\b0 \cf4 (count > \cf5 160\cf4 )\{
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f0\i \cf2 //window.alert(count);
+\f1\i0 \cf0 \
+
+\f2 \cf4                     hrc  +=\cf5 1\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4                     \}
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f3\b \cf6 else
+\f2\b0 \cf4 \{\}
+\f1 \cf0 \
+
+\f2 \cf4                     \}
+\f1 \cf0 \
+
+\f2 \cf4                     hrc = hrc * \cf5 6\cf4  ;
+\f1 \cf0 \
+
+\f2 \cf4                     localStorage.setItem(\cf7 "heart"\cf4 , hrc.toString());
+\f1 \cf0 \
+
+\f2 \cf4                     
+\f0\i \cf2 //countertext.textContent = hrc;
+\f1\i0 \cf0 \
+
+\f2 \cf4                     
+\f0\i \cf2 //window.alert(hrc);
+\f1\i0 \cf0 \
+
+\f2 \cf4                     \}, \cf5 10000\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4         
+\f1 \cf0 \
+
+\f2 \cf4         $(\cf5 '#chart'\cf4 ).highcharts(\{
+\f1 \cf0 \
+
+\f2 \cf4                                chart : \{
+\f1 \cf0 \
+
+\f2 \cf4                                type : \cf5 'spline'\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                animation: Highcharts.svg,
+\f1 \cf0 \
+
+\f2 \cf4                                marginRight:\cf5 10\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                events: \{
+\f1 \cf0 \
+
+\f2 \cf4                                load: 
+\f3\b \cf6 function
+\f2\b0 \cf4  ()\{
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 var
+\f2\b0 \cf4  series = this.series[\cf5 0\cf4 ];
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 var
+\f2\b0 \cf4  lastarray = localStorage.getItem(\cf7 "lastarray"\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 var
+\f2\b0 \cf4  yes3 = localStorage.getItem(\cf7 "last"\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                                yes1 = y_values.length ;
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                lastarray1 =parseFloat(lastarray);
+\f1 \cf0 \
+
+\f2 \cf4                                yes3 = parseFloat(yes3);
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 if
+\f2\b0 \cf4 (lastarray1)\{\}
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 else
+\f1\b0 \cf0 \
+
+\f2 \cf4                                \{lastarray1=\cf5 88\cf4 ;\}
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 if
+\f2\b0 \cf4 (yes1 != lastarray1)
+\f1 \cf0 \
+
+\f2 \cf4                                \{
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                yes2 = lastarray1;
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f0\i \cf2 //window.alert(yes2);
+\f1\i0 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 else
+\f1\b0 \cf0 \
+
+\f2 \cf4                                \{
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f0\i \cf2 //window.alert(yes3);
+\f1\i0 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 if
+\f2\b0 \cf4  (yes3)
+\f1 \cf0 \
+
+\f2 \cf4                                \{yes2 = lastarray1\cf5 -220\cf4 ;\}
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f3\b \cf6 else
+\f1\b0 \cf0 \
+
+\f2 \cf4                                \{yes2 = \cf5 88\cf4 ;\}
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                
+\f1 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                localStorage.setItem(\cf7 "input"\cf4 ,yes2.toString());
+\f1 \cf0 \
+
+\f2 \cf4                                setInterval(
+\f3\b \cf6 function
+\f2\b0 \cf4 () \{
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f3\b \cf6 var
+\f2\b0 \cf4  x = x_values;
+\f1 \cf0 \
+
+\f2 \cf4                                            yes1 = y_values.length ;
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 //yes2 = parseFloat(localStorage.getItem("input"));
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            yes2 = yes2 \cf5 +1\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f3\b \cf6 if
+\f2\b0 \cf4  (yes2>yes1)
+\f1 \cf0 \
+
+\f2 \cf4                                            \{yes2 = yes1\cf5 -220\cf4 ;\}
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f3\b \cf6 else
+\f2\b0 \cf4 \{\}
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 // window.alert(yes2);
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            
+\f3\b \cf6 if
+\f2\b0 \cf4  (yes2 != yes1)
+\f1 \cf0 \
+
+\f2 \cf4                                            \{ yes= parseFloat(y_values[yes2]);
+\f1 \cf0 \
+
+\f2 \cf4                                            localStorage.setItem(\cf7 "last"\cf4 ,yes2.toString());
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 //     localStorage.setItem("lastarray", yes1.toString());
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            \}
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f3\b \cf6 else
+\f1\b0 \cf0 \
+
+\f2 \cf4                                            \{
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 // yes2 = lastarray1-220;
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            localStorage.setItem(\cf7 "lastarray"\cf4 , yes1.toString());
+\f1 \cf0 \
+
+\f2 \cf4                                            window.alert(\cf5 'refreshing database'\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                                            window.location.reload(\cf5 1\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 //localStorage.clear();
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            
+\f1 \cf0 \
+
+\f2 \cf4                                            \}
+\f1 \cf0 \
+
+\f2 \cf4                                            y= yes;
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 //y = y_values;
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            
+\f0\i \cf2 //y= Math.random();
+\f1\i0 \cf0 \
+
+\f2 \cf4                                            series.addPoint([x, y], true, true);
+\f1 \cf0 \
+
+\f2 \cf4                                            
+\f1 \cf0 \
+
+\f2 \cf4                                            \}, \cf5 100\cf4 );
+\f1 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                credits:\{
+\f1 \cf0 \
+
+\f2 \cf4                                enabled: false,
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                exporting:\{
+\f1 \cf0 \
+
+\f2 \cf4                                enabled: false,
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                title: \{
+\f1 \cf0 \
+
+\f2 \cf4                                text: null
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                xAxis: \{
+\f1 \cf0 \
+
+\f2 \cf4                                labels: \{
+\f1 \cf0 \
+
+\f2 \cf4                                enabled: false
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                visible: false,
+\f1 \cf0 \
+
+\f2 \cf4                                gridLineWidth: \cf5 0\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                yAxis : \{
+\f1 \cf0 \
+
+\f2 \cf4                                title : \{
+\f1 \cf0 \
+
+\f2 \cf4                                text : \cf5 ''
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                labels : \{
+\f1 \cf0 \
+
+\f2 \cf4                                enabled: false
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                gridLineWidth: \cf5 0\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                visible: false,
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                tooltip : \{
+\f1 \cf0 \
+
+\f2 \cf4                                crosshairs : true,
+\f1 \cf0 \
+
+\f2 \cf4                                shared : true,
+\f1 \cf0 \
+
+\f2 \cf4                                valueSuffix : \cf5 ''
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                plotOptions : \{
+\f1 \cf0 \
+
+\f2 \cf4                                spline : \{
+\f1 \cf0 \
+
+\f2 \cf4                                marker : \{
+\f1 \cf0 \
+
+\f2 \cf4                                radius : \cf5 4\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                lineColor : \cf5 '#666666'\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                lineWidth : \cf5 1\cf4 ,
+\f1 \cf0 \
+
+\f2 \cf4                                enabled: false
+\f1 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                \}
+\f1 \cf0 \
+
+\f2 \cf4                                \},
+\f1 \cf0 \
+
+\f2 \cf4                                series : [\{
+\f1 \cf0 \
+
+\f2 \cf4                                showInLegend: false,
+\f1 \cf0 \
+
+\f2 \cf4                                name : null,
+\f1 \cf0 \
+
+\f2 \cf4                                data : (
+\f3\b \cf6 function
+\f2\b0 \cf4  ()\{
+\f1 \cf0 \
+
+\f2 \cf4                                        
+\f1 \cf0 \
+
+\f2 \cf4                                        
+\f3\b \cf6 var
+\f2\b0 \cf4  data = [],
+\f1 \cf0 \
+
+\f2 \cf4                                        time = x_values, i;
+\f1 \cf0 \
+
+\f2 \cf4                                        
+\f1 \cf0 \
+
+\f2 \cf4                                        
+\f3\b \cf6 for
+\f2\b0 \cf4  (i = \cf5 -499\cf4 ; i<=\cf5 0\cf4 ; i += \cf5 2\cf4 ) \{
+\f1 \cf0 \
+
+\f2 \cf4                                        data.push(\{
+\f1 \cf0 \
+
+\f2 \cf4                                                  x: time,
+\f1 \cf0 \
+
+\f2 \cf4                                                  y: y_values,
+\f1 \cf0 \
+
+\f2 \cf4                                                  
+\f0\i \cf2 //y: time,
+\f1\i0 \cf0 \
+
+\f2 \cf4                                                  \})
+\f1 \cf0 \
+
+\f2 \cf4                                        \}
+\f1 \cf0 \
+
+\f2 \cf4                                        
+\f3\b \cf6 return
+\f2\b0 \cf4  data;
+\f1 \cf0 \
+
+\f2 \cf4                                        \}())
+\f1 \cf0 \
+
+\f2 \cf4                                \}]
+\f1 \cf0 \
+
+\f2 \cf4                                \});
+\f1 \cf0 \
+
+\f2 \cf4         \});
+\f1 \cf0 \
+
+\f2 \cf4   
+\f1 \cf0 \
+
+\f2 \cf4   \});
+\f1 \cf0 \
+\
+}

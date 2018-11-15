@@ -1,0 +1,125 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red252\green106\blue93;\red108\green121\blue134;\red150\green134\blue245;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000;
+\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c42394\c47462\c52518;\csgenericrgb\c58752\c52717\c95948;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 \cb3 <?php
+\f1\b0 \cf0 \
+
+\f2 \cf4     $servername = \cf5 "localhost"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     $username = \cf5 "root"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     $password = \cf5 "1a2b3c4d"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     $dbname = \cf5 "Heartrate1"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     
+\f1 \cf0 \
+
+\f2 \cf4    
+\f3\i \cf6 //  Create connection
+\f1\i0 \cf0 \
+
+\f2 \cf4     $conn = 
+\f0\b \cf2 new
+\f2\b0 \cf4  mysqli($servername, $username, $password, $dbname);
+\f1 \cf0 \
+
+\f2 \cf4    
+\f3\i \cf6 //  Check connection
+\f1\i0 \cf0 \
+
+\f2 \cf4     
+\f0\b \cf2 if
+\f2\b0 \cf4  ($conn->connect_error) \{
+\f1 \cf0 \
+
+\f2 \cf4         
+\f0\b \cf2 die
+\f2\b0 \cf4 (\cf5 "Connection failed: "\cf4  
+\f0\b \cf2 .
+\f2\b0 \cf4  $conn->connect_error);
+\f1 \cf0 \
+
+\f2 \cf4     \}
+\f1 \cf0 \
+
+\f2 \cf4     
+\f1 \cf0 \
+
+\f2 \cf4     $sql = \cf5 "SELECT ind, voltage FROM data"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     
+\f3\i \cf6 //,Heartrate
+\f1\i0 \cf0 \
+
+\f2 \cf4     $result = $conn->query($sql);
+\f1 \cf0 \
+
+\f2 \cf4     
+\f1 \cf0 \
+
+\f2 \cf4     
+\f0\b \cf2 if
+\f2\b0 \cf4  ($result->num_rows > \cf7 0\cf4 ) \{
+\f1 \cf0 \
+
+\f2 \cf4         
+\f3\i \cf6 // output data of each row
+\f1\i0 \cf0 \
+
+\f2 \cf4         
+\f0\b \cf2 while
+\f2\b0 \cf4 ($row = $result->fetch_assoc()) \{
+\f1 \cf0 \
+
+\f2 \cf4             
+\f0\b \cf2 echo
+\f2\b0 \cf4  $row[\cf7 'ind'\cf4 ]
+\f0\b \cf2 .
+\f2\b0 \cf4  \cf5 "/"\cf4  
+\f0\b \cf2 .
+\f2\b0 \cf4  $row[\cf7 'voltage'\cf4 ]
+\f0\b \cf2 .
+\f2\b0 \cf4  \cf5 "/"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4             
+\f3\i \cf6 //. $row['Heartrate']. "/"
+\f1\i0 \cf0 \
+
+\f2 \cf4         \}
+\f1 \cf0 \
+
+\f2 \cf4     \} 
+\f0\b \cf2 else
+\f2\b0 \cf4  \{
+\f1 \cf0 \
+
+\f2 \cf4         
+\f0\b \cf2 echo
+\f2\b0 \cf4  \cf5 "0 results"\cf4 ;
+\f1 \cf0 \
+
+\f2 \cf4     \}
+\f1 \cf0 \
+
+\f2 \cf4     $conn->close();
+\f1 \cf0 \
+
+\f2 \cf4     
+\f0\b \cf2 ?>
+\f1\b0 \cf0 \
+}
