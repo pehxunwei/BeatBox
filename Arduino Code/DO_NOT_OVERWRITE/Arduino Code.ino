@@ -124,8 +124,4 @@ if (x > 99 && x < 1000) {
 yield();
 delay (50); // This delay is important to control the flow of data sent out. This effectuveli controls the sample speed of hte ADC. DO NOT MAKE THIS ZERO.
 
-  //these lines are to send dummy data to the database. If you unbcomment these then dummy and wrong data will be sent. 
-  //cursor->execute("INSERT INTO `data` (`ind`, `voltage`, `user`, `time`) VALUES (NULL, '4.7', 'xunwei', CURRENT_TIMESTAMP)");
-    //cursor->execute(INSERT_SQL);
-
 }
